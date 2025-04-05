@@ -15,7 +15,7 @@ const checkAuth:(req: Request, res: Response, next: NextFunction) => Promise<any
   const request_name = req.route.stack[req.route.stack.length - 1].name;
   const permissions = user.permissions
   console.log(request_name)
-  // Client
+  
   if (permissions?.all) {
     const request_names = ["getGames"]
     if (request_names.includes(request_name)) {
@@ -30,8 +30,6 @@ const checkAuth:(req: Request, res: Response, next: NextFunction) => Promise<any
     }
   }
 
-
-  // next()
 
   return res.status(403).send('dont have permision');
 };
