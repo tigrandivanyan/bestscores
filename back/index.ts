@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
 	});
 });
 
-const PORT = 9000;
+const PORT = process.env.PORT || 8000;
 
 const MONGO_DB = process.env.MONGO_DB;
 
