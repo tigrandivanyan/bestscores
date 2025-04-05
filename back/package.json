@@ -11,6 +11,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/nodemailer": "^6.4.17",
     "axios": "^1.8.4",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -25,9 +29,5 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.1",
-    "@types/nodemailer": "^6.4.17"
   }
 }
