@@ -38,7 +38,7 @@ io.use((socket, next) => {
 		if (user?.permissions.sender || !user?.permissions.sender) {
 			next();
         }
-        if (!user?.permissions.all && user?.permissions.sender) {
+        if (!user?.permissions.all && !user?.permissions.sender) {
             return next(new Error("dont have permission"))
         }
 	})();
