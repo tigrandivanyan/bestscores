@@ -5,7 +5,7 @@ import cors from "cors";
 import userRouter from "./routes/user";
 import http from "http";
 import { Server } from "socket.io";
-import User from "./models/User";32
+import User from "./models/User";
 import gameRouter from './routes/game'
 
 configDotenv();
