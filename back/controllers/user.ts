@@ -78,11 +78,11 @@ export const loginUser: (req: Request, res: Response) => Promise<any> = async (r
         const isValid = await bcrypt.compare(password, user.password);
         const newToken = randomUUID()
         if (isValid) {
-            if (!user.permissions.sender) {
-                await User.findByIdAndUpdate(user._id, {token: newToken})
-            }
+            // if (!user.permissions.sender) {
+            //     await User.findByIdAndUpdate(user._id, {token: newToken})
+            // }
 
-            res.status(200).send(newToken)
+            res.status(200).send(user.token)
         } else {
             res.status(400).send('Incorrect email or passwor')
         }
