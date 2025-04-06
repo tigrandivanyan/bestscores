@@ -122,4 +122,31 @@ export const downloadInstaller = async (req: Request, res: Response): Promise<vo
 };
 
 
+export const resetPassword: (req: Request, res: Response) => Promise<any> = async (req, res) => {
+    const token = req.headers.token
+
+    const user = await User.findOne({ token: token })
+    
+    if (user) {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'bestscores.club@gmail.com',
+              pass: 'fzyo ezip kggv untl ',
+            },
+        });
+    
+        await transporter.sendMail({
+            from: 'bestscores.club@gmail.com',
+            to: user.email,
+            subject: 'Your link to reset password',
+            text: `Please click here to reset your password: https://bestscores.sandia.site/#/reset?${user.code}`,
+        });      
+
+        res.status(200).send('link sended')
+    } else {
+        return res.status(400).send('User not found')
+    }
+}
+
 
