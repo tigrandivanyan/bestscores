@@ -4,6 +4,8 @@ import User from "../models/User";
 import { randomUUID } from 'crypto'
 import { createHash } from 'crypto';
 import bcrypt from 'bcrypt'
+import path from 'path'
+import fs from 'fs'
 
 export const emailVerification: (req: Request, res: Response) => Promise<any> = async (req, res) => {
     const { code } = req.body
@@ -94,3 +96,24 @@ export const updateUser: (req: Request, res: Response) => Promise<any> = async (
     
     await User.findByIdAndUpdate(userId, {permissions: permissions})
 }
+
+
+export const downloadInstaller = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const filePath = path.join(__dirname, "./clicker.zip");
+  
+      // Check if the file exists before downloading
+      if (!fs.existsSync(filePath)) {
+        res.status(404).send("Installer not found.");
+        return;
+      }
+  
+      res.download(filePath, "BestScoresInstaller.exe");
+    } catch (err) {
+      console.error("Download error:", err);
+      res.status(500).send("Something went wrong.");
+    }
+  };
+
+
+

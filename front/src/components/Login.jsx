@@ -30,7 +30,7 @@ const Login = () => {
         }
     }, [token]);
 
-    const download_link = "http://your-server-link.com"
+    const download_link = "https://bestscores.sandia.site/api/user/download"
 
     return (
         <div className="login-form">
