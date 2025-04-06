@@ -19,7 +19,7 @@ export const emailVerification: (req: Request, res: Response) => Promise<any> = 
 
         res.status(200).send('ok')
     } else {
-        res.status(200).send('Wrong code')
+        res.status(400).send('Wrong code')
     }
 
 }
