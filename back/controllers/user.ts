@@ -12,7 +12,7 @@ export const emailVerification: (req: Request, res: Response) => Promise<any> = 
     .update(code.toString())
     .digest('hex');
     
-    const user = await User.findOne({ token: req.headers.token })
+    const user = await User.findOne({ code: hashedCode })
     
     if (user?.code === hashedCode) {
         await User.findOneAndUpdate({ token: req.headers.token },{ active: true })
