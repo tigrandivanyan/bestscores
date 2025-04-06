@@ -19,7 +19,7 @@ const Login = ({ token, setToken }) => {
 				password,
 			});
 			setToken(response.data);
-			localStorage.setItem("token", token);
+			localStorage.setItem("token", response.data);
 		} catch (error) {
 			console.error("Registration failed:", error);
 		}
