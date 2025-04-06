@@ -1,0 +1,22 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .block {
+        position: relative;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 50px;
+        width: 90vw;
+        max-width: 500px;
+        img {
+            width: 100px;
+        }
+        button {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+    }
+}

@@ -1,84 +1,82 @@
+import logo from "../images/logo.png";
+import "./LoggedIn.scss";
 
-
-export const LoggedIn = ({token}) => {
-
-    const download_link = "https://bestscores.sandia.site/api/user/download";
-
+export const LoggedIn = ({ token, email }) => {
+    const logout = () => {
+        window.localStorage.removeItem("token");
+        window.location.reload();
+    };
     return (
-        <div>
-        <h2>Your Token</h2>
-        <b>{token || localStorage.getItem("token")}</b>
-        <div>
-            <h3>English:</h3>
-            <p>
-                Welcome to Our Website!
-                <br />
-                Thank you for visiting. To get started, simply click the button below to download the program. The program is packed in a ZIP folder containing an executable file (.exe) for Windows.
-                <br />
-                Installation Instructions:
-                <br />
-                1. Download the ZIP folder.
-                <br />
-                2. Extract the contents of the ZIP folder to a folder of your choice.
-                <br />
-                3. Double-click the .exe file to run the program.
-                <br />
-                4. Follow the on-screen instructions to complete the installation.
-                <br />
-                Enjoy using the program!
-            </p>
-            <a href={download_link} target="_blank" rel="noopener noreferrer">
-                <button>Download Program</button>
-            </a>
+        <div className="main">
+            <div className="block">
+                <img src={logo} alt="" />
+                <button onClick={logout}>Log out</button>
+                <h2>Hello, {email}. Your Token Is:</h2>
+                <b>{token || localStorage.getItem("token")}</b>
+                <div>
+                    <h3>English:</h3>
+                    <p>
+                        <h3>Welcome to BestScores! 🎉</h3>
+                        Thank you for visiting, <br />
+                        <br />
+                        To get started, above you see your token, please write to our admin on Telegram <b>@bestscores_admin</b> to get started. 📲
+                        <br />
+                        <br />
+                        1. He will ask for your email and to install AnyDesk 🖥️
+                        <br />
+                        2. He will ask for your AnyDesk ID 🆔
+                        <br />
+                        3. The program will be installed on your computer where you can choose games and automatically click wherever you want 🎮
+                        <br />
+                        <br />
+                        Do not share your token with anyone (even our administrator) you might lose your access permanently if you do so 🔒
+                        <br />
+                        Enjoy using the program! 🚀
+                    </p>
+                </div>
+                <hr />
+                <div>
+                    <h3>Polish (Polski):</h3>
+                    <p>
+                        <h3>Witaj w BestScores! 🎉</h3>
+                        Dziękujemy za odwiedzenie naszej strony. <br />
+                        Aby rozpocząć, powyżej znajdziesz swój token, proszę napisz do naszego administratora na Telegramie <b>@bestscores_admin</b> aby rozpocząć. 📲
+                        <br />
+                        <br />
+                        1. Poprosi o twój email i instalację AnyDesk 🖥️
+                        <br />
+                        2. Poprosi o twój ID w AnyDesk 🆔
+                        <br />
+                        3. Program zostanie zainstalowany na twoim komputerze, gdzie będziesz mógł wybierać gry i automatycznie klikać w dowolnym miejscu 🎮
+                        <br />
+                        <br />
+                        Nie udostępniaj swojego tokena nikomu (nawet naszemu administratorowi), inaczej możesz stracić dostęp na zawsze 🔒
+                        <br />
+                        Miłego korzystania z programu! 🚀
+                    </p>
+                </div>
+                <hr />
+                <div>
+                    <h3>Russian (Русский):</h3>
+                    <p>
+                        <h3>Добро пожаловать в BestScores! 🎉</h3>
+                        Спасибо, что посетили нас. <br />
+                        Чтобы начать, выше вы видите ваш токен, пожалуйста, напишите нашему администратору в Telegram <b>@bestscores_admin</b> для начала. 📲
+                        <br />
+                        <br />
+                        1. Он попросит ваш email и установить AnyDesk 🖥️
+                        <br />
+                        2. Он попросит ваш ID AnyDesk 🆔
+                        <br />
+                        3. Программа будет установлена на вашем компьютере, где вы сможете выбирать игры и автоматически кликать в любом месте 🎮
+                        <br />
+                        <br />
+                        Не делитесь своим токеном с кем-либо (даже с нашим администратором), иначе вы можете потерять доступ навсегда 🔒
+                        <br />
+                        Приятного использования программы! 🚀
+                    </p>
+                </div>
+            </div>
         </div>
-        <hr />
-        <div>
-            <h3>Russian (Русский):</h3>
-            <p>
-                Добро пожаловать на наш сайт!
-                <br />
-                Спасибо, что посетили нас. Чтобы начать, просто нажмите кнопку ниже для загрузки программы. Программа упакована в ZIP-архив, который содержит исполняемый файл (.exe) для Windows.
-                <br />
-                Инструкция по установке:
-                <br />
-                1. Скачайте ZIP-архив.
-                <br />
-                2. Распакуйте содержимое архива в выбранную вами папку.
-                <br />
-                3. Дважды щелкните по файлу .exe для запуска программы.
-                <br />
-                4. Следуйте инструкциям на экране для завершения установки.
-                <br />
-                Приятного использования программы!
-            </p>
-            <a href={download_link} target="_blank" rel="noopener noreferrer">
-                <button>Скачать программу</button>
-            </a>
-        </div>
-        <hr />
-        <div>
-            <h3>Polish (Polski):</h3>
-            <p>
-                Witaj na naszej stronie!
-                <br />
-                Dziękujemy za odwiedzenie naszej strony. Aby rozpocząć, kliknij przycisk poniżej, aby pobrać program. Program jest zapakowany w folder ZIP zawierający plik wykonywalny (.exe) dla systemu Windows.
-                <br />
-                Instrukcje instalacji:
-                <br />
-                1. Pobierz folder ZIP.
-                <br />
-                2. Rozpakuj zawartość folderu ZIP do wybranej lokalizacji.
-                <br />
-                3. Kliknij dwukrotnie plik .exe, aby uruchomić program.
-                <br />
-                4. Postępuj zgodnie z instrukcjami na ekranie, aby zakończyć instalację.
-                <br />
-                Miłego korzystania z programu!
-            </p>
-            <a href={download_link} target="_blank" rel="noopener noreferrer">
-                <button>Pobierz program</button>
-            </a>
-        </div>
-    </div>
-    )
-}
+    );
+};
