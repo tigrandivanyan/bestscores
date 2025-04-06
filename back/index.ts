@@ -13,7 +13,13 @@ configDotenv();
 const app = express();
 const server = http.createServer(app);
 
-export const io = new Server(server);
+export const io = new Server(server, {
+	cors: {
+		origin: "*", // Change this to the actual origin for production
+		methods: ["GET", "POST"],
+		credentials: true
+	}
+});
 
 interface IConnectedUser {
 	token: string;
