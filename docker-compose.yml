@@ -1,11 +1,18 @@
-version: '3.3'
+version: "3.3"
 
 services:
+  front:
+  build:
+    context: ./front
+  ports:
+    - '3000:80'
+  restart: always
+
   back:
     build:
       context: ./back
     ports:
-      - '8000:8000'
+      - "8000:8000"
     restart: always
     environment:
       MONGO_DB: "mongodb+srv://gevorgatikyan1:Ye4PLtvfSCqy7WhN@cluster0.3zf45.mongodb.net/bestscore?authSource=admin"
