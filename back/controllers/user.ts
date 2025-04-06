@@ -100,7 +100,7 @@ export const updateUser: (req: Request, res: Response) => Promise<any> = async (
 
 export const downloadInstaller = async (req: Request, res: Response): Promise<void> => {
     try {
-      const filePath = path.join(__dirname, "./clicker.zip");
+      const filePath = path.join(__dirname, "../clicker.zip");
   
       // Check if the file exists before downloading
       if (!fs.existsSync(filePath)) {
