@@ -28,19 +28,25 @@ export const emailVerification: (req: Request, res: Response) => Promise<any> = 
 
 export const registerUser: (req: Request, res: Response) => Promise<any> = async (req, res) => {
     const { email, password } = req.body
+
+    const user = await User.findOne({ email: email })
+    
+    if (user) {
+        return res.status(400).send('User with that email already exists')
+    }
     
     const code = Math.floor(100000 + Math.random() * 900000);
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'sandia.club8@gmail.com',
-          pass: 'zybq uzyj yuec zlmc ',
+          user: 'bestscores.club@gmail.com',
+          pass: 'fzyo ezip kggv untl ',
         },
     });
 
     await transporter.sendMail({
-        from: 'your.email@gmail.com',
+        from: 'bestscores.club@gmail.com',
         to: email,
         subject: 'Your Verification Code',
         text: `Your code is: ${code}`,
@@ -113,7 +119,7 @@ export const downloadInstaller = async (req: Request, res: Response): Promise<vo
       console.error("Download error:", err);
       res.status(500).send("Something went wrong.");
     }
-  };
+};
 
 
 

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Login.scss";
 import logo from "../images/logo.png";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { request } from "../request";
 import { LoggedIn } from "./LoggedIn";
 
-const Login = () => {
+const Login = ({ token, setToken }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [token, setToken] = useState("");
 	const [showToken, setShowToken] = useState(false);
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -31,13 +31,17 @@ const Login = () => {
 		}
 	}, [token]);
 
+	const navigateToRegister = () => {
+		navigate("/register");
+	};
+
 	const download_link = "https://bestscores.sandia.site/api/user/download";
 
-	return (
-		<div className="login-form">
-			<img src={logo} alt="BestScores Logo" className="logo" />
-			{!showToken && !localStorage.getItem("token") ? (
-				<>
+	if (!showToken && !localStorage.getItem("token")) {
+		return (
+			<div className="login-container">
+				<div className="login-form">
+					<img src={logo} alt="BestScores Logo" className="logo" />
 					<h2>Login</h2>
 					<form onSubmit={handleSubmit}>
 						<input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
@@ -47,13 +51,19 @@ const Login = () => {
 							placeholder="Password"
 						/>
 						<button type="submit">Login</button>
+						<button
+							onClick={navigateToRegister}
+							style={{ marginTop: "10px", backgroundColor: "#2d7a4e" }}
+						>
+							Register
+						</button>
 					</form>
-				</>
-			) : (
-          <LoggedIn token={token} />
-			)}
-		</div>
-	);
+				</div>
+			</div>
+		);
+	} else {
+		return <LoggedIn token={token} />;
+	}
 };
 
 export default Login;

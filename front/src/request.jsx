@@ -26,7 +26,7 @@ request.interceptors.response.use(
             localStorage.removeItem("premissions");
             window.location.reload();
         } else if (error.status === 400) {
-            alert('Wrong code')
+            alert(error?.message)
         }
         // if (error.response) {
         //     Swal.fire({
