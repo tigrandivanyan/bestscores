@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Game from "../models/Game";
 import { io } from "..";
 
-export const getGames: (req: Request, res: Response) => Promise<any> = async (req, res) => {
+export const postGames: (req: Request, res: Response) => Promise<any> = async (req, res) => {
     const { games } = req.body;
     
     let promises = []
@@ -30,4 +30,11 @@ export const getGames: (req: Request, res: Response) => Promise<any> = async (re
     await Promise.all(promises)
 
     res.status(200).send("ok");
-};
+}
+
+export const getGames: (req: Request, res: Response) => Promise<any> = async (req, res) => {
+    const games = await Game.find()
+
+    res.status(200).send(games)
+}
+ 
