@@ -123,9 +123,9 @@ export const downloadInstaller = async (req: Request, res: Response): Promise<vo
 
 
 export const resetPassword: (req: Request, res: Response) => Promise<any> = async (req, res) => {
-    const token = req.headers.token
-
-    const user = await User.findOne({ token: token })
+    const { email } = req.body
+    
+    const user = await User.findOne({ email: email })
     
     if (user) {
         const transporter = nodemailer.createTransport({
