@@ -129,10 +129,12 @@ app.use("/api/game", gameRouter);
 
 app.get('/api/111', (req, res) => {
     io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 1 }));
+    res.sendStatus(200)
 })
 
 app.get('/api/222', (req, res) => {
-    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 1 }));
+    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 2 }));
+    res.sendStatus(200)
 })
 
 
