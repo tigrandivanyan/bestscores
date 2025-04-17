@@ -8,6 +8,7 @@ import { Server } from "socket.io";
 import User from "./models/User";
 import gameRouter from "./routes/game";
 import Game from "./models/Game";
+import { eventNames } from "process";
 
 configDotenv();
 
@@ -128,12 +129,12 @@ app.use("/api/user", userRouter);
 app.use("/api/game", gameRouter);
 
 app.get('/api/111', (req, res) => {
-    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 1 }));
+    io.to("room1").emit("message", { "eventName": "P1 - P2 OUR", "signal": 1 });
     res.sendStatus(200)
 })
 
 app.get('/api/222', (req, res) => {
-    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 2 }));
+    io.to("room1").emit("message", { "eventName": "P1 - P2 OUR", "signal": 2 });
     res.sendStatus(200)
 })
 
