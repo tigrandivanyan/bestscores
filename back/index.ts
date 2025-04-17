@@ -127,6 +127,15 @@ app.use(
 app.use("/api/user", userRouter);
 app.use("/api/game", gameRouter);
 
+app.get('/api/111', (req, res) => {
+    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 1 }));
+})
+
+app.get('/api/222', (req, res) => {
+    io.to("room1").emit("message", JSON.stringify({ "eventName": "P1 - P2 OUR", "signal": 1 }));
+})
+
+
 // Start the server
 server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
